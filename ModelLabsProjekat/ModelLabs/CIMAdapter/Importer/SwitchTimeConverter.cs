@@ -114,6 +114,17 @@
                 {
                     rd.AddProperty(new Property(ModelCode.REGULARTIMEPOINT_VALUE2, cimRegularTimePoint.Value2));
                 }
+
+                if(cimRegularTimePoint.IntervalScheduleHasValue)
+                {
+                    long gid = importHelper.GetMappedGID(cimRegularTimePoint.IntervalSchedule.ID);
+                    if (gid < 0)
+                    {
+                        report.Report.Append("WARNING: Convert ").Append(cimRegularTimePoint.GetType().ToString()).Append(" rdfID = \"").Append(cimRegularTimePoint.ID);
+                        report.Report.Append("\" - Failed to set reference to PowerTransformer: rdfID \"").Append(cimRegularTimePoint.IntervalSchedule.ID).AppendLine(" \" is not mapped to GID!");
+                    }
+                    rd.AddProperty(new Property(ModelCode.REGULARTIMEPOINT_INTERVALSCHEDULE, gid));
+                }
             }
         }
 
@@ -150,6 +161,17 @@
                 {
                     rd.AddProperty(new Property(ModelCode.RECLOSESEQUENCE_RECLOSESTEP, cimRecloseSequence.RecloseStep));
                 }
+
+                if(cimRecloseSequence.ProtectedSwitchHasValue)
+                {
+                    long gid = importHelper.GetMappedGID(cimRecloseSequence.ProtectedSwitch.ID);
+                    if (gid < 0)
+                    {
+                        report.Report.Append("WARNING: Convert ").Append(cimRecloseSequence.GetType().ToString()).Append(" rdfID = \"").Append(cimRecloseSequence.ID);
+                        report.Report.Append("\" - Failed to set reference to RecloseSequence: rdfID \"").Append(cimRecloseSequence.ProtectedSwitch.ID).AppendLine(" \" is not mapped to GID!");
+                    }
+                    rd.AddProperty(new Property(ModelCode.REGULARTIMEPOINT_INTERVALSCHEDULE, gid));
+                }    
             }
         }
 
@@ -166,6 +188,16 @@
             if ((cimSeasonDayTypeSchedule != null) && (rd != null))
             {
                 SwitchTimeConverter.PopulateRegularIntervalScheduleProperties(cimSeasonDayTypeSchedule, rd, importHelper, report);
+
+                if(cimSeasonDayTypeSchedule.SeasonHasValue)
+                {
+                    //reference
+                }
+
+                if(cimSeasonDayTypeSchedule.DayTypeHasValue)
+                {
+                    //reference
+                }
             }
         }
 
@@ -175,6 +207,11 @@
             if ((cimSwitchSchedule != null) && (rd != null))
             {
                 SwitchTimeConverter.PopulateSeasonDayTypeScheduleProperties(cimSwitchSchedule, rd, importHelper, report);
+
+                if (cimSwitchSchedule.SwitchHasValue)
+                {
+                    //reference
+                }
             }
         }
 
@@ -311,53 +348,6 @@
             }
         }
         #endregion Enums convert
-
-        //public static void PopulateLocationProperties(FTN.Location cimLocation, ResourceDescription rd)
-        //{
-        //	if ((cimLocation != null) && (rd != null))
-        //	{
-        //		PowerTransformerConverter.PopulateIdentifiedObjectProperties(cimLocation, rd);
-
-        //		if (cimLocation.CategoryHasValue)
-        //		{
-        //			rd.AddProperty(new Property(ModelCode.LOCATION_CATEGORY, cimLocation.Category));
-        //		}
-        //		if (cimLocation.CorporateCodeHasValue)
-        //		{
-        //			rd.AddProperty(new Property(ModelCode.LOCATION_CORPORATECODE, cimLocation.CorporateCode));
-        //		}
-        //	}
-        //}
-
-        //public static void PopulateBaseVoltageProperties(FTN.BaseVoltage cimBaseVoltage, ResourceDescription rd)
-        //{
-        //	if ((cimBaseVoltage != null) && (rd != null))
-        //	{
-        //		PowerTransformerConverter.PopulateIdentifiedObjectProperties(cimBaseVoltage, rd);
-
-        //		if (cimBaseVoltage.NominalVoltageHasValue)
-        //		{
-        //			rd.AddProperty(new Property(ModelCode.BASEVOLTAGE_NOMINALVOLTAGE, cimBaseVoltage.NominalVoltage));
-        //		}
-        //	}
-        //}
-
-        //public static void PopulatePowerTransformerProperties(FTN.PowerTransformer cimPowerTransformer, ResourceDescription rd, ImportHelper importHelper, TransformAndLoadReport report)
-        //{
-        //	if ((cimPowerTransformer != null) && (rd != null))
-        //	{
-        //		PowerTransformerConverter.PopulateEquipmentProperties(cimPowerTransformer, rd, importHelper, report);
-
-        //		if (cimPowerTransformer.FunctionHasValue)
-        //		{
-        //			rd.AddProperty(new Property(ModelCode.POWERTR_FUNC, (short)GetDMSTransformerFunctionKind(cimPowerTransformer.Function)));
-        //		}
-        //		if (cimPowerTransformer.AutotransformerHasValue)
-        //		{
-        //			rd.AddProperty(new Property(ModelCode.POWERTR_AUTO, cimPowerTransformer.Autotransformer));
-        //		}
-        //	}
-        //}
 
         //public static void PopulateTransformerWindingProperties(FTN.TransformerWinding cimTransformerWinding, ResourceDescription rd, ImportHelper importHelper, TransformAndLoadReport report)
         //{
