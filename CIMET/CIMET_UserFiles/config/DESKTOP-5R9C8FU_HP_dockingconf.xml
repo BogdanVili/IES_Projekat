@@ -2,7 +2,7 @@
 <!-- Magic, The User Interface library for .NET (www.dotnetmagic.com) -->
 <!-- Modifying this generated file will probably render it invalid -->
 <DockingConfig FormatVersion="5" InsideFill="False" InnerMinimum="20, 20">
-  <Content Name="Log Explorer" Visible="True" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="True" DisplaySize="290, 300" DisplayLocation="150, 150" AutoHideSize="150, 150" FloatingSize="350, 600" FullTitle="Log Explorer">
+  <Content Name="Log Explorer" Visible="True" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="True" DisplaySize="485, 300" DisplayLocation="150, 150" AutoHideSize="150, 150" FloatingSize="350, 600" FullTitle="Log Explorer">
     <DefaultRestore Type="Crownwood.Magic.Docking.RestoreContentState">
       <Content Name="Log Explorer" />
       <State Value="DockLeft" />
@@ -16,7 +16,7 @@
     <DockingRestore Type="Crownwood.Magic.Docking.RestoreContentDockingAffinity">
       <Content Name="Log Explorer" />
       <State Value="DockRight" />
-      <Position Size="290, 300" Location="150, 150" />
+      <Position Size="485, 300" Location="150, 150" />
       <Best Count="4">
         <Item Name="Log Explorer" />
         <Item Name="Query Manager" />
@@ -59,7 +59,7 @@
       <Child Type="null" />
     </FloatingRestore>
   </Content>
-  <Content Name="Query Manager" Visible="True" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="True" DisplaySize="290, 300" DisplayLocation="150, 150" AutoHideSize="150, 150" FloatingSize="350, 600" FullTitle="Query Manager">
+  <Content Name="Query Manager" Visible="True" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="True" DisplaySize="485, 300" DisplayLocation="150, 150" AutoHideSize="150, 150" FloatingSize="350, 600" FullTitle="Query Manager">
     <DefaultRestore Type="Crownwood.Magic.Docking.RestoreContentState">
       <Content Name="Query Manager" />
       <State Value="DockLeft" />
@@ -73,7 +73,7 @@
     <DockingRestore Type="Crownwood.Magic.Docking.RestoreContentDockingAffinity">
       <Content Name="Query Manager" />
       <State Value="DockRight" />
-      <Position Size="290, 300" Location="150, 150" />
+      <Position Size="485, 300" Location="150, 150" />
       <Best Count="3">
         <Item Name="Query Manager" />
         <Item Name="CIM Data Explorer" />
@@ -113,7 +113,7 @@
       <Child Type="null" />
     </FloatingRestore>
   </Content>
-  <Content Name="CIM Data Explorer" Visible="True" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="True" DisplaySize="290, 300" DisplayLocation="150, 150" AutoHideSize="150, 150" FloatingSize="350, 600" FullTitle="CIM Data Explorer">
+  <Content Name="CIM Data Explorer" Visible="True" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="True" DisplaySize="485, 300" DisplayLocation="150, 150" AutoHideSize="150, 150" FloatingSize="350, 600" FullTitle="CIM Data Explorer">
     <DefaultRestore Type="Crownwood.Magic.Docking.RestoreContentState">
       <Content Name="CIM Data Explorer" />
       <State Value="DockLeft" />
@@ -127,7 +127,7 @@
     <DockingRestore Type="Crownwood.Magic.Docking.RestoreContentDockingAffinity">
       <Content Name="CIM Data Explorer" />
       <State Value="DockRight" />
-      <Position Size="290, 300" Location="150, 150" />
+      <Position Size="485, 300" Location="150, 150" />
       <Best Count="2">
         <Item Name="CIM Data Explorer" />
         <Item Name="Profile Explorer" />
@@ -153,7 +153,7 @@
           <Previous Count="1">
             <Item Name="Profile Explorer" />
           </Previous>
-          <Selected Value="False" />
+          <Selected Value="True" />
           <Child Type="null" />
         </Child>
       </Child>
@@ -164,7 +164,7 @@
       <Child Type="null" />
     </FloatingRestore>
   </Content>
-  <Content Name="Profile Explorer" Visible="True" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="True" DisplaySize="290, 300" DisplayLocation="150, 150" AutoHideSize="150, 150" FloatingSize="350, 600" FullTitle="Profile Explorer">
+  <Content Name="Profile Explorer" Visible="True" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="True" DisplaySize="485, 300" DisplayLocation="150, 150" AutoHideSize="150, 150" FloatingSize="350, 600" FullTitle="Profile Explorer">
     <DefaultRestore Type="Crownwood.Magic.Docking.RestoreContentState">
       <Content Name="Profile Explorer" />
       <State Value="DockLeft" />
@@ -178,7 +178,7 @@
     <DockingRestore Type="Crownwood.Magic.Docking.RestoreContentDockingAffinity">
       <Content Name="Profile Explorer" />
       <State Value="DockRight" />
-      <Position Size="290, 300" Location="150, 150" />
+      <Position Size="485, 300" Location="150, 150" />
       <Best Count="1">
         <Item Name="Profile Explorer" />
       </Best>

@@ -28,7 +28,9 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
 
 		private long powerTransformer = 0;
 
-		private List<long> windingTests = new List<long>();		
+		private List<long> windingTests = new List<long>();
+
+		private int setting;
 
 		public TransformerWinding(long globalId)
 			: base(globalId)
@@ -281,8 +283,8 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
 				return windingTests.Count!= 0 || base.IsReferenced;
 			}
 		}
-		
-		public override void GetReferences(Dictionary<ModelCode, List<long>> references, TypeOfReference refType)
+
+        public override void GetReferences(Dictionary<ModelCode, List<long>> references, TypeOfReference refType)
 		{
 			if (powerTransformer != 0 && (refType == TypeOfReference.Reference || refType == TypeOfReference.Both))
 			{

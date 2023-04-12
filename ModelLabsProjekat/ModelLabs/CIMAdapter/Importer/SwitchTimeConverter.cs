@@ -154,7 +154,7 @@
 
                 if (cimRecloseSequence.RecloseDelayHasValue)
                 {
-                    //here
+                    rd.AddProperty(new Property(ModelCode.RECLOSESEQUENCE_RECLOSEDELAY, cimRecloseSequence.RecloseDelay));
                 }
 
                 if (cimRecloseSequence.RecloseStepHasValue)
@@ -246,7 +246,7 @@
 
                 if (cimSwitch.RatedCurrentHasValue)
                 {
-                    //here
+                    rd.AddProperty(new Property(ModelCode.SWITCH_RATEDCURRENT, cimSwitch.RatedCurrent));
                 }
 
                 if (cimSwitch.RetainedHasValue)
@@ -274,7 +274,7 @@
 
                 if (cimProtectedSwitch.BreakingCapacityHasValue)
                 {
-                    //here
+                    rd.AddProperty(new Property(ModelCode.PROTECTEDSWITCH_BREAKINGCAPACITY, cimProtectedSwitch.BreakingCapacity));
                 }
             }
         }
@@ -295,7 +295,7 @@
 
                 if (cimBreaker.InTransitTimeHasValue)
                 {
-                    //here
+                    rd.AddProperty(new Property(ModelCode.BREAKER_INTRANSITTIME, cimBreaker.InTransitTime));
                 }
             }
         }

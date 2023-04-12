@@ -42,7 +42,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Core
 		/// <summary>
 		/// Description of identified object
 		/// </summary>		
-		private string description = string.Empty;
+		private string aliasName = string.Empty;
 		
 		/// <summary>
 		/// Initializes a new instance of the IdentifiedObject class.
@@ -97,10 +97,10 @@ namespace FTN.Services.NetworkModelService.DataModel.Core
 		/// <summary>
 		/// Gets or sets description of the entity (identified object).
 		/// </summary>			
-		public string Description
+		public string AliasName
 		{
-			get { return description; }
-			set { description = value; }
+			get { return aliasName; }
+			set { aliasName = value; }
 		}		
 
 		public static bool operator ==(IdentifiedObject x, IdentifiedObject y)
@@ -134,7 +134,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Core
 			{
 				IdentifiedObject io = (IdentifiedObject)x;
 				return ((io.GlobalId == this.GlobalId) && (io.name == this.name) && (io.mrid == this.mrid) &&
-						(io.description == this.description));
+						(io.aliasName == this.aliasName));
 			}
 		}
 		
@@ -177,7 +177,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Core
 					break;
 
                 case ModelCode.IDOBJ_DESCRIPTION:
-                    property.SetValue(description);
+                    property.SetValue(aliasName);
                     break;
 			
 				default:
@@ -196,7 +196,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Core
 					break;
 
 				case ModelCode.IDOBJ_DESCRIPTION:
-					description = property.AsString();					
+					aliasName = property.AsString();					
 					break;
 
 				case ModelCode.IDOBJ_MRID:					
