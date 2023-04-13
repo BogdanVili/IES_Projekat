@@ -1,4 +1,5 @@
 ﻿using FTN.Common;
+using FTN.Services.NetworkModelService.DataModel.LoadModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -80,5 +81,25 @@ namespace FTN.Services.NetworkModelService.DataModel.Core
 
         #endregion IAccess implementation
 
+        #region IReference implementation
+        public override bool IsReferenced
+        {
+            get
+            {
+                return timePoints.Count > 0 || base.IsReferenced;
+            }
+        }
+
+        public override void GetReferences(Dictionary<ModelCode, List<long>> references, TypeOfReference refType)
+        {
+            if (timePoints != null && timePoints.Count != 0 && (refType == TypeOfReference.Target || refType == TypeOfReference.Both))
+            {
+                references[ModelCode.REGULARINTERVALSCHEDULE_TIMEPOINTS] = timePoints.GetRange(0, timePoints.Count);
+            }
+
+            base.GetReferences(references, refType);
+        }
+
+        #endregion IReference implementation
     }
 }

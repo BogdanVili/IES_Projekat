@@ -1,4 +1,5 @@
 ﻿using FTN.Common;
+using FTN.Services.NetworkModelService.DataModel.Core;
 using FTN.Services.NetworkModelService.DataModel.LoadModel;
 using System;
 using System.Collections.Generic;
@@ -85,5 +86,19 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
 
         #endregion IAccess implementation
 
+        #region IReference implementation
+
+        public override void GetReferences(Dictionary<ModelCode, List<long>> references, TypeOfReference refType)
+        {
+            if (switch_prop != 0 && (refType == TypeOfReference.Reference || refType == TypeOfReference.Both))
+            {
+                references[ModelCode.SWITCHSCHEDULE_SWITCH] = new List<long>();
+                references[ModelCode.SWITCHSCHEDULE_SWITCH].Add(switch_prop);
+            }
+
+            base.GetReferences(references, refType);
+        }
+
+        #endregion IReference implementation
     }
 }

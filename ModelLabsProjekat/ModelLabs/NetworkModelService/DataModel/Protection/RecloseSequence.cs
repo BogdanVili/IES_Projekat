@@ -121,5 +121,18 @@ namespace FTN.Services.NetworkModelService.DataModel.Protection
 
         #endregion IAccess implementation
 
+        #region IReference implementation
+        public override void GetReferences(Dictionary<ModelCode, List<long>> references, TypeOfReference refType)
+        {
+            if (protectedSwitch != 0 && (refType == TypeOfReference.Reference || refType == TypeOfReference.Both))
+            {
+                references[ModelCode.RECLOSESEQUENCE_PROTECTEDSWITCH] = new List<long>();
+                references[ModelCode.RECLOSESEQUENCE_PROTECTEDSWITCH].Add(protectedSwitch);
+            }
+
+            base.GetReferences(references, refType);
+        }
+
+        #endregion IReference implementation
     }
 }

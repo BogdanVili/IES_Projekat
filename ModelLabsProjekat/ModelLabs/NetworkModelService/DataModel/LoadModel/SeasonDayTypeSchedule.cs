@@ -103,5 +103,24 @@ namespace FTN.Services.NetworkModelService.DataModel.LoadModel
 
         #endregion IAccess implementation
 
+        #region IReference implementation
+        public override void GetReferences(Dictionary<ModelCode, List<long>> references, TypeOfReference refType)
+        {
+            if (season != 0 && (refType == TypeOfReference.Reference || refType == TypeOfReference.Both))
+            {
+                references[ModelCode.SEASONDAYTYPESCHEDULE_SEASON] = new List<long>();
+                references[ModelCode.SEASONDAYTYPESCHEDULE_SEASON].Add(season);
+            }
+
+            if (dayType != 0 && (refType == TypeOfReference.Reference || refType == TypeOfReference.Both))
+            {
+                references[ModelCode.SEASONDAYTYPESCHEDULE_DAYTYPE] = new List<long>();
+                references[ModelCode.SEASONDAYTYPESCHEDULE_DAYTYPE].Add(dayType);
+            }
+
+            base.GetReferences(references, refType);
+        }
+
+        #endregion IReference implementation
     }
 }

@@ -1,5 +1,7 @@
 ﻿using FTN.Common;
 using FTN.Services.NetworkModelService.DataModel.Core;
+using FTN.Services.NetworkModelService.DataModel.LoadModel;
+using FTN.Services.NetworkModelService.DataModel.Protection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -170,5 +172,61 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
 
         #endregion IAccess implementation
 
+        #region IReference implementation
+        public override bool IsReferenced
+        {
+            get
+            {
+                return switchSchedules.Count > 0 || base.IsReferenced;
+            }
+        }
+
+        public override void GetReferences(Dictionary<ModelCode, List<long>> references, TypeOfReference refType)
+        {
+            if (switchSchedules != null && switchSchedules.Count != 0 && (refType == TypeOfReference.Target || refType == TypeOfReference.Both))
+            {
+                references[ModelCode.SWITCH_SWITCHSCHEDULES] = switchSchedules.GetRange(0, switchSchedules.Count);
+            }
+
+            base.GetReferences(references, refType);
+        }
+
+        public override void AddReference(ModelCode referenceId, long globalId)
+        {
+            switch (referenceId)
+            {
+                case ModelCode.SWITCHSCHEDULE_SWITCH:
+                    switchSchedules.Add(globalId);
+                    break;
+
+                default:
+                    base.AddReference(referenceId, globalId);
+                    break;
+            }
+        }
+
+        public override void RemoveReference(ModelCode referenceId, long globalId)
+        {
+            switch (referenceId)
+            {
+                case ModelCode.SWITCHSCHEDULE_SWITCH:
+
+                    if (switchSchedules.Contains(globalId))
+                    {
+                        switchSchedules.Remove(globalId);
+                    }
+                    else
+                    {
+                        CommonTrace.WriteTrace(CommonTrace.TraceWarning, "Entity (GID = 0x{0:x16}) doesn't contain reference 0x{1:x16}.", this.GlobalId, globalId);
+                    }
+
+                    break;
+                default:
+                    base.RemoveReference(referenceId, globalId);
+                    break;
+            }
+        }
+
+        #endregion IReference implementation
     }
 }

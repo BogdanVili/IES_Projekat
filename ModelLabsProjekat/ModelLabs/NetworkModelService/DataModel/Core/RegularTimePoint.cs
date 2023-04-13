@@ -138,5 +138,18 @@ namespace FTN.Services.NetworkModelService.DataModel.Core
 
         #endregion IAccess implementation
 
+        #region IReference implementation
+        public override void GetReferences(Dictionary<ModelCode, List<long>> references, TypeOfReference refType)
+        {
+            if (intervalSchedule != 0 && (refType == TypeOfReference.Reference || refType == TypeOfReference.Both))
+            {
+                references[ModelCode.REGULARTIMEPOINT_INTERVALSCHEDULE] = new List<long>();
+                references[ModelCode.REGULARTIMEPOINT_INTERVALSCHEDULE].Add(intervalSchedule);
+            }
+
+            base.GetReferences(references, refType);
+        }
+
+        #endregion IReference implementation
     }
 }

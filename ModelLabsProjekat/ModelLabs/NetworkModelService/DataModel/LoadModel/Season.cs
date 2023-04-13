@@ -116,5 +116,61 @@ namespace FTN.Services.NetworkModelService.DataModel.LoadModel
         }
 
         #endregion IAccess implementation
+
+        #region IReference implementation
+        public override bool IsReferenced
+        {
+            get
+            {
+                return seasonDayTypeSchedules.Count > 0 || base.IsReferenced;
+            }
+        }
+        public override void GetReferences(Dictionary<ModelCode, List<long>> references, TypeOfReference refType)
+        {
+            if (seasonDayTypeSchedules != null && seasonDayTypeSchedules.Count != 0 && (refType == TypeOfReference.Target || refType == TypeOfReference.Both))
+            {
+                references[ModelCode.SEASON_SEASONDAYTYPESCHEDULES] = seasonDayTypeSchedules.GetRange(0, seasonDayTypeSchedules.Count);
+            }
+
+            base.GetReferences(references, refType);
+        }
+
+        public override void AddReference(ModelCode referenceId, long globalId)
+        {
+            switch (referenceId)
+            {
+                case ModelCode.SEASONDAYTYPESCHEDULE_SEASON:
+                    seasonDayTypeSchedules.Add(globalId);
+                    break;
+
+                default:
+                    base.AddReference(referenceId, globalId);
+                    break;
+            }
+        }
+
+        public override void RemoveReference(ModelCode referenceId, long globalId)
+        {
+            switch (referenceId)
+            {
+                case ModelCode.SEASONDAYTYPESCHEDULE_SEASON:
+
+                    if (seasonDayTypeSchedules.Contains(globalId))
+                    {
+                        seasonDayTypeSchedules.Remove(globalId);
+                    }
+                    else
+                    {
+                        CommonTrace.WriteTrace(CommonTrace.TraceWarning, "Entity (GID = 0x{0:x16}) doesn't contain reference 0x{1:x16}.", this.GlobalId, globalId);
+                    }
+
+                    break;
+                default:
+                    base.RemoveReference(referenceId, globalId);
+                    break;
+            }
+        }
+
+        #endregion IReference implementation
     }
 }
