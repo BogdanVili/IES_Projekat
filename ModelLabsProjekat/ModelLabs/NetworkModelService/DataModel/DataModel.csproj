@@ -106,7 +106,6 @@
     <Compile Include="Wires\ProtectedSwitch.cs" />
     <Compile Include="Wires\Switch.cs" />
     <Compile Include="Wires\SwitchSchedule.cs" />
-    <Compile Include="Wires\TransformerWinding.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common.csproj">

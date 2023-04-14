@@ -18,7 +18,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
 
         private bool retained;
 
-        private int switchOnCount;
+        private long switchOnCount;
 
         private DateTime switchOnDate;
 
@@ -46,7 +46,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
             set { retained = value; }
         }
 
-        public int SwitchOnCount
+        public long SwitchOnCount
         {
             get { return switchOnCount; }
             set { switchOnCount = value; }
@@ -157,7 +157,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
                     break;
 
                 case ModelCode.SWITCH_SWITCHONCOUNT:
-                    switchOnCount = property.AsInt();
+                    switchOnCount = property.AsLong();
                     break;
 
                 case ModelCode.SWITCH_SWITCHONDATE:

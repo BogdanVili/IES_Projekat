@@ -153,7 +153,7 @@
           <Previous Count="1">
             <Item Name="Profile Explorer" />
           </Previous>
-          <Selected Value="True" />
+          <Selected Value="False" />
           <Child Type="null" />
         </Child>
       </Child>
@@ -256,7 +256,7 @@
       <Child Type="null" />
     </FloatingRestore>
   </Content>
-  <Content Name="Validation" Visible="True" Docked="True" AutoHidden="True" CaptionBar="True" CloseButton="True" DisplaySize="150, 150" DisplayLocation="150, 150" AutoHideSize="150, 150" FloatingSize="500, 400" FullTitle="Validation">
+  <Content Name="Validation" Visible="False" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="True" DisplaySize="150, 150" DisplayLocation="150, 150" AutoHideSize="150, 150" FloatingSize="500, 400" FullTitle="Validation">
     <DefaultRestore Type="Crownwood.Magic.Docking.RestoreContentState">
       <Content Name="Validation" />
       <State Value="DockLeft" />
@@ -317,7 +317,7 @@
       <Child Type="null" />
     </FloatingRestore>
   </Content>
-  <Content Name="Output" Visible="True" Docked="True" AutoHidden="True" CaptionBar="True" CloseButton="True" DisplaySize="150, 150" DisplayLocation="150, 150" AutoHideSize="150, 150" FloatingSize="350, 600" FullTitle="Output">
+  <Content Name="Output" Visible="False" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="True" DisplaySize="290, 300" DisplayLocation="150, 150" AutoHideSize="150, 150" FloatingSize="350, 600" FullTitle="Output">
     <DefaultRestore Type="Crownwood.Magic.Docking.RestoreContentState">
       <Content Name="Output" />
       <State Value="DockLeft" />

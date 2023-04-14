@@ -170,7 +170,7 @@
                         report.Report.Append("WARNING: Convert ").Append(cimRecloseSequence.GetType().ToString()).Append(" rdfID = \"").Append(cimRecloseSequence.ID);
                         report.Report.Append("\" - Failed to set reference to ProtectedSwitch: rdfID \"").Append(cimRecloseSequence.ProtectedSwitch.ID).AppendLine(" \" is not mapped to GID!");
                     }
-                    rd.AddProperty(new Property(ModelCode.REGULARTIMEPOINT_INTERVALSCHEDULE, gid));
+                    rd.AddProperty(new Property(ModelCode.RECLOSESEQUENCE_PROTECTEDSWITCH, gid));
                 }    
             }
         }
@@ -197,7 +197,7 @@
                         report.Report.Append("WARNING: Convert ").Append(cimSeasonDayTypeSchedule.GetType().ToString()).Append(" rdfID = \"").Append(cimSeasonDayTypeSchedule.ID);
                         report.Report.Append("\" - Failed to set reference to Season: rdfID \"").Append(cimSeasonDayTypeSchedule.Season.ID).AppendLine(" \" is not mapped to GID!");
                     }
-                    rd.AddProperty(new Property(ModelCode.REGULARTIMEPOINT_INTERVALSCHEDULE, gid));
+                    rd.AddProperty(new Property(ModelCode.SEASONDAYTYPESCHEDULE_SEASON, gid));
                 }
 
                 if(cimSeasonDayTypeSchedule.DayTypeHasValue)
@@ -208,7 +208,7 @@
                         report.Report.Append("WARNING: Convert ").Append(cimSeasonDayTypeSchedule.GetType().ToString()).Append(" rdfID = \"").Append(cimSeasonDayTypeSchedule.ID);
                         report.Report.Append("\" - Failed to set reference to DayType: rdfID \"").Append(cimSeasonDayTypeSchedule.DayType.ID).AppendLine(" \" is not mapped to GID!");
                     }
-                    rd.AddProperty(new Property(ModelCode.REGULARTIMEPOINT_INTERVALSCHEDULE, gid));
+                    rd.AddProperty(new Property(ModelCode.SEASONDAYTYPESCHEDULE_DAYTYPE, gid));
                 }
             }
         }
@@ -228,7 +228,7 @@
                         report.Report.Append("WARNING: Convert ").Append(cimSwitchSchedule.GetType().ToString()).Append(" rdfID = \"").Append(cimSwitchSchedule.ID);
                         report.Report.Append("\" - Failed to set reference to Switch: rdfID \"").Append(cimSwitchSchedule.Switch.ID).AppendLine(" \" is not mapped to GID!");
                     }
-                    rd.AddProperty(new Property(ModelCode.REGULARTIMEPOINT_INTERVALSCHEDULE, gid));
+                    rd.AddProperty(new Property(ModelCode.SWITCHSCHEDULE_SWITCH, gid));
                 }
             }
         }

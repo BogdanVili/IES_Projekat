@@ -374,7 +374,7 @@ namespace FTN.Services.NetworkModelService
 				CommonTrace.WriteTrace(CommonTrace.TraceVerbose, "Inserting entity with GID ({0:x16}) successfully finished.", globalId);
 			}			
 			catch (Exception ex)
-			{
+			{		
 				string message = String.Format("Failed to insert entity (GID = 0x{0:x16}) into model. {1}", rd.Id, ex.Message);				
 				CommonTrace.WriteTrace(CommonTrace.TraceError, message);
 				throw new Exception(message);

@@ -1,5 +1,6 @@
 ﻿using FTN.Common;
 using FTN.Services.NetworkModelService.DataModel.LoadModel;
+using FTN.Services.NetworkModelService.DataModel.Wires;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -98,6 +99,42 @@ namespace FTN.Services.NetworkModelService.DataModel.Core
             }
 
             base.GetReferences(references, refType);
+        }
+
+        public override void AddReference(ModelCode referenceId, long globalId)
+        {
+            switch (referenceId)
+            {
+                case ModelCode.REGULARTIMEPOINT_INTERVALSCHEDULE:
+                    timePoints.Add(globalId);
+                    break;
+
+                default:
+                    base.AddReference(referenceId, globalId);
+                    break;
+            }
+        }
+
+        public override void RemoveReference(ModelCode referenceId, long globalId)
+        {
+            switch (referenceId)
+            {
+                case ModelCode.REGULARTIMEPOINT_INTERVALSCHEDULE:
+
+                    if (timePoints.Contains(globalId))
+                    {
+                        timePoints.Remove(globalId);
+                    }
+                    else
+                    {
+                        CommonTrace.WriteTrace(CommonTrace.TraceWarning, "Entity (GID = 0x{0:x16}) doesn't contain reference 0x{1:x16}.", this.GlobalId, globalId);
+                    }
+
+                    break;
+                default:
+                    base.RemoveReference(referenceId, globalId);
+                    break;
+            }
         }
 
         #endregion IReference implementation
