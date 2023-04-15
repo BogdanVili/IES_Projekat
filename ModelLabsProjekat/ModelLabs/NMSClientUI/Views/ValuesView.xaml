@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="NMSClientUI.Views.ValuesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NMSClientUI.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="4*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <ComboBox Grid.Column="0" Grid.Row="0" x:Name="GIDSelectionCombobox" SelectionChanged="GIDSelectionCombobox_SelectionChanged" SelectedIndex="0"></ComboBox>
+            <ListBox SelectionMode="Multiple" Grid.Column="0" Grid.Row="1" x:Name="PropertiesSelection"></ListBox>
+            <Button Grid.Column="0" Grid.Row="2" x:Name="Start" Click="Start_Click">Start</Button>
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="1" Grid.RowSpan="3">
+                <TextBlock x:Name="DataTextBlock"></TextBlock>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</UserControl>

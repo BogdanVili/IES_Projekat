@@ -114,10 +114,10 @@ namespace TelventDMS.Services.NetworkModelService.TestClient.Tests
 				while (resourcesLeft > 0)
 				{
 					List<ResourceDescription> rds = GdaQueryProxy.IteratorNext(numberOfResources, iteratorId);
-
+                    
 					for (int i = 0; i < rds.Count; i++)
 					{
-						ids.Add(rds[i].Id);
+                        ids.Add(rds[i].Id);
 						rds[i].ExportToXml(xmlWriter);
 						xmlWriter.Flush();
 					}
