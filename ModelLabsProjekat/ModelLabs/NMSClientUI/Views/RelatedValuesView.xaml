@@ -7,6 +7,27 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Grid Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="4*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <ComboBox Grid.Column="0" Grid.Row="0" x:Name="GIDSelectionCombobox" SelectionChanged="GIDSelectionCombobox_SelectionChanged" SelectedIndex="0"></ComboBox>
+            <ComboBox Grid.Column="0" Grid.Row="1" x:Name="ReferenceSelectionCombobox" SelectedIndex="0"></ComboBox>
+            <ComboBox Grid.Column="0" Grid.Row="2" x:Name="ConcreteSelectionCombobox" SelectionChanged="ConcreteSelectionCombobox_SelectionChanged"></ComboBox>
+            <ListBox SelectionMode="Multiple" Grid.Column="0" Grid.Row="3" x:Name="PropertiesSelection"></ListBox>
+            <Button Grid.Column="0" Grid.Row="4" x:Name="Start" Click="Start_Click">Start</Button>
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="1" Grid.RowSpan="4">
+                <TextBlock x:Name="DataTextBlock"></TextBlock>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </UserControl>

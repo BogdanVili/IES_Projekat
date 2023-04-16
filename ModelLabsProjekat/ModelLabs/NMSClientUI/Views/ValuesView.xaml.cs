@@ -35,11 +35,13 @@ namespace NMSClientUI.Views
             long selectedGID = (long)GIDSelectionCombobox.SelectedItem;
             if (selectedGID == 0) { return; }
 
-            PropertiesSelection.ItemsSource = gdaClient.GetModelCodes(selectedGID);
+            PropertiesSelection.ItemsSource = gdaClient.GetPropertiesModelCodes(selectedGID);
         }
 
         private void Start_Click(object sender, RoutedEventArgs e)
         {
+            DataTextBlock.Text = string.Empty;
+
             long selectedGID = (long)GIDSelectionCombobox.SelectedItem;
             if (selectedGID == 0) { return; }
 

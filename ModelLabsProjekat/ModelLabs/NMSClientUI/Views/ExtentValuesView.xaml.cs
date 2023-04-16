@@ -36,11 +36,13 @@ namespace NMSClientUI.Views
             ModelCode selectedConcrete = (ModelCode)ConcreteSelectionCombobox.SelectedItem;
             if (selectedConcrete == 0) { return; }
 
-            PropertiesSelection.ItemsSource = gdaClient.GetModelCodes(selectedConcrete);
+            PropertiesSelection.ItemsSource = gdaClient.GetPropertiesModelCodes(selectedConcrete);
         }
 
         private void Start_Click(object sender, RoutedEventArgs e)
         {
+            DataTextBlock.Text = string.Empty;
+
             ModelCode selectedConcrete = (ModelCode)ConcreteSelectionCombobox.SelectedItem;
             if (selectedConcrete == 0) { return; }
 

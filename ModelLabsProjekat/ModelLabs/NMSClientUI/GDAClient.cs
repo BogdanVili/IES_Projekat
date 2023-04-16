@@ -71,13 +71,13 @@ namespace NMSClientUI
             return returnGIDs;
         }
 
-        public List<ModelCode> GetModelCodes(long globalId)
+        public List<ModelCode> GetPropertiesModelCodes(long globalId)
         {
             short type = ModelCodeHelper.ExtractTypeFromGlobalId(globalId);
             return modelResourcesDesc.GetAllPropertyIds((DMSType)type);
         }
 
-        public List<ModelCode> GetModelCodes(ModelCode concrete)
+        public List<ModelCode> GetPropertiesModelCodes(ModelCode concrete)
         {
             return modelResourcesDesc.GetAllPropertyIds(concrete);
         }
@@ -93,6 +93,41 @@ namespace NMSClientUI
                                             ModelCode.REGULARTIMEPOINT,
                                             ModelCode.RECLOSESEQUENCE
                                          };
+        }
+
+        public List<ModelCode> GetRefrenceModelCodes(long globalId)
+        {
+            List<ModelCode> references = new List<ModelCode>();
+
+            List<ModelCode> modelcodes = modelResourcesDesc.GetAllPropertyIdsForEntityId(globalId);
+
+            foreach (ModelCode modelcode in modelcodes)
+            {
+                if (Property.GetPropertyType(modelcode) == PropertyType.Reference || Property.GetPropertyType(modelcode) == PropertyType.ReferenceVector)
+                {
+                    references.Add(modelcode);
+                }
+            }
+            
+            return references;
+        }
+
+        public List<ModelCode> GetAllProperties()
+        {
+            List<ModelCode> properties = new List<ModelCode>();
+
+            foreach(ModelCode concrete in GetConcreteModelCodes())
+            {
+                foreach (ModelCode property in GetPropertiesModelCodes(concrete))
+                {
+                    if(!properties.Contains(property))
+                    {
+                        properties.Add(property);
+                    }
+                }
+            }
+
+            return properties;
         }
 
         public string GetValues(long globalId, List<ModelCode> properties)
@@ -119,6 +154,37 @@ namespace NMSClientUI
             int iteratorId = 0;
 
             iteratorId = GdaQueryProxy.GetExtentValues(concrete, properties);
+            resourcesLeft = GdaQueryProxy.IteratorResourcesLeft(iteratorId);
+
+            while (resourcesLeft > 0)
+            {
+                List<ResourceDescription> rds = GdaQueryProxy.IteratorNext(numberOfResources, iteratorId);
+
+                for (int i = 0; i < rds.Count; i++)
+                {
+                    foreach (Property property in rds[i].Properties)
+                    {
+                        extentValueString += BuildPropertyString(property);
+                    }
+                    extentValueString += "\n";
+                }
+
+                resourcesLeft = GdaQueryProxy.IteratorResourcesLeft(iteratorId);
+            }
+
+            GdaQueryProxy.IteratorClose(iteratorId);
+
+            return extentValueString;
+        }
+
+        public string GetRelatedValues(long globalId, List<ModelCode> properties, Association association)
+        {
+            string extentValueString = "";
+            int numberOfResources = 2;
+            int resourcesLeft = 0;
+            int iteratorId = 0;
+
+            iteratorId = GdaQueryProxy.GetRelatedValues(globalId, properties, association);
             resourcesLeft = GdaQueryProxy.IteratorResourcesLeft(iteratorId);
 
             while (resourcesLeft > 0)
